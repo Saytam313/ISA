@@ -1,0 +1,54 @@
+Aplikace umožňuje klientů spravovat nástěnky na serveru pomocí HTTP API.
+Klienti mají možnost prohlížet, upravovat, přidávat a odebírat nástěnky.
+Nastěnky obsahují textové záznamy.
+
+spuštění serveru:
+	Parametry:
+		-h - vypis této napovědy
+		-p - tento parametr určuje na kterem portu bude server očekávat spojení
+
+	Spůsob spuštění serveru:
+	    ./isaserver -p <port>
+
+	Použité knihovny:
+		errno.h
+		signal.h
+		stdio.h
+		stdlib.h
+		string.h
+		unistd.h
+		netdb.h
+		sys/socket.h
+
+	Omezeni:
+		maximálni počet rádků headeru - 255;
+		maximálni počet znaků zprávy - 1000;
+
+Spuštění klienta:
+
+	Parametry:
+		-h - výpis této napovědy
+		-p - tento parametr určuje na kterém portu se klient připojí k serveru
+		-H - tento parametr určuje host
+
+	Spůsob spuštění klienta:
+		./isaclient -H <host> -p <port> <command>
+
+	dostupné commandy:
+		boards - vrací seznam dostupných nástěnek
+		board add <name> - vytvoří novou prázdnou nastěnku s názvem name
+		board delete <name> - smaže nástěnku s názvem name
+		board list <name> - zobrazí obsah nástěnky name
+		item add <name> <content> - vloži nový příspěvek na poslední místo nástěnky name
+		item delete <name> <id> - odstraní příspěvek číslo id z nástěnky name
+		item update <name> <id> <content> - upraví příspěvek číslo id z nástěnky name
+
+	Použité knihovny:
+		errno.h
+		stdio.h
+		stdlib.h
+		string.h
+		getopt.h
+		unistd.h
+		netdb.h
+		sys/socket.h
